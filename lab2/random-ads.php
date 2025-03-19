@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Random Ads Before Post Content
  * Description: Wyświetla losowe ogłoszenie przed treścią posta.
- * Version: 1.0
- * Author: Jakub Borsuk
+ * Version: 1.1
+ * Author: Jakub Borsuk i Aleksander Stepaniuk
  */
 
 if (!defined('ABSPATH')) {

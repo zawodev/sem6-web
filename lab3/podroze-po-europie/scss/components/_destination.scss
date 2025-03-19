@@ -1,0 +1,36 @@
+%box-style {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.destination { //zagnieżdżanie
+  @extend %box-style; //dziedziczenie
+  background-color: lighten($secondary-color, 20%);
+  margin: 10px;
+  padding: 15px;
+  
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  h2 {
+    color: darken($secondary-color, 20%);
+    margin-bottom: 10px;
+  }
+
+  p {
+    flex: 1;
+    margin-right: 10px;
+  }
+
+  img {
+    flex: 1;
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+}

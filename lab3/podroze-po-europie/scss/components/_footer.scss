@@ -1,0 +1,8 @@
+// components/_footer.scss
+footer {
+  @include center-text;
+  background-color: $primary-color;
+  color: #fff;
+  padding: 10px;
+  font-size: 0.9rem;
+}

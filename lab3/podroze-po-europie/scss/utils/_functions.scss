@@ -1,0 +1,4 @@
+// funkcja do obliczania rozmiaru czcionki na podstawie ceny
+@function pricegouging($price, $defsize) {
+  @return $defsize + (2 * $price);
+}

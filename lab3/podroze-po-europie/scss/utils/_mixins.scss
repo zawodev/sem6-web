@@ -1,0 +1,11 @@
+// mixiny to fragmenty kodu które można wielokrotnie wykorzysatć
+@mixin center-text {
+  text-align: center;
+  font-weight: bold;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

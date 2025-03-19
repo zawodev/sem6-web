@@ -1,0 +1,12 @@
+// components/_header.scss
+header {
+  @include center-text;
+  background-color: $primary-color;
+  color: #fff;
+  padding: 20px;
+  
+  p {
+    margin-top: 10px;
+    font-size: 0.8em;
+  }
+}

@@ -1,0 +1,10 @@
+// main.scss
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/functions';
+@import 'utils/loops';
+@import 'base/reset';
+@import 'base/typography';
+@import 'components/header';
+@import 'components/footer';
+@import 'components/destination';

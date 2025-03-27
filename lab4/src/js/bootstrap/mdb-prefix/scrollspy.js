@@ -1,14 +1,20 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap scrollspy.js
+ * Bootstrap (v5.2.3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import BaseComponent from './base-component.js';
-import EventHandler from './dom/event-handler.js';
-import SelectorEngine from './dom/selector-engine.js';
-import { defineJQueryPlugin, getElement, isDisabled, isVisible } from './util/index.js';
+import {
+  defineJQueryPlugin,
+  getElement,
+  isDisabled,
+  isVisible,
+  getSelectorFromElement,
+} from './util/index';
+import EventHandler from './dom/event-handler';
+import SelectorEngine from './dom/selector-engine';
+import BaseComponent from './base-component';
 
 /**
  * Constants
@@ -160,7 +166,6 @@ class ScrollSpy extends BaseComponent {
       threshold: this._config.threshold,
       rootMargin: this._config.rootMargin,
     };
-
     return new IntersectionObserver((entries) => this._observerCallback(entries), options);
   }
 
@@ -216,11 +221,11 @@ class ScrollSpy extends BaseComponent {
         continue;
       }
 
-      const observableSection = SelectorEngine.findOne(decodeURI(anchor.hash), this._element);
+      const observableSection = SelectorEngine.findOne(anchor.hash, this._element);
 
       // ensure that the observableSection exists & is visible
       if (isVisible(observableSection)) {
-        this._targetLinks.set(decodeURI(anchor.hash), anchor);
+        this._targetLinks.set(anchor.hash, anchor);
         this._observableSections.set(anchor.hash, observableSection);
       }
     }
@@ -294,14 +299,14 @@ class ScrollSpy extends BaseComponent {
 
 // EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
 //   for (const spy of SelectorEngine.find(SELECTOR_DATA_SPY)) {
-//     ScrollSpy.getOrCreateInstance(spy)
+//     ScrollSpy.getOrCreateInstance(spy);
 //   }
-// })
+// });
 
 /**
  * jQuery
  */
 
-// defineJQueryPlugin(ScrollSpy)
+defineJQueryPlugin(ScrollSpy);
 
 export default ScrollSpy;

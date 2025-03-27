@@ -1,14 +1,14 @@
 /*!
- * Bootstrap focustrap.js v5.3.3 (https://getbootstrap.com/)
- * Copyright 2011-2024 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+ * Bootstrap focustrap.js v5.2.3 (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
     ? (module.exports = factory(
-        require('../dom/event-handler.js'),
-        require('../dom/selector-engine.js'),
-        require('./config.js')
+        require('../dom/event-handler'),
+        require('../dom/selector-engine'),
+        require('./config')
       ))
     : typeof define === 'function' && define.amd
     ? define(['../dom/event-handler', '../dom/selector-engine', './config'], factory)
@@ -17,13 +17,19 @@
 })(this, function (EventHandler, SelectorEngine, Config) {
   'use strict';
 
+  const _interopDefaultLegacy = (e) =>
+    e && typeof e === 'object' && 'default' in e ? e : { default: e };
+
+  const EventHandler__default = /*#__PURE__*/ _interopDefaultLegacy(EventHandler);
+  const SelectorEngine__default = /*#__PURE__*/ _interopDefaultLegacy(SelectorEngine);
+  const Config__default = /*#__PURE__*/ _interopDefaultLegacy(Config);
+
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap util/focustrap.js
+   * Bootstrap (v5.2.3): util/focustrap.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
-
   /**
    * Constants
    */
@@ -44,54 +50,62 @@
     autofocus: 'boolean',
     trapElement: 'element',
   };
-
   /**
    * Class definition
    */
 
-  class FocusTrap extends Config {
+  class FocusTrap extends Config__default.default {
     constructor(config) {
       super();
       this._config = this._getConfig(config);
       this._isActive = false;
       this._lastTabNavDirection = null;
-    }
+    } // Getters
 
-    // Getters
     static get Default() {
       return Default;
     }
+
     static get DefaultType() {
       return DefaultType;
     }
+
     static get NAME() {
       return NAME;
-    }
+    } // Public
 
-    // Public
     activate() {
       if (this._isActive) {
         return;
       }
+
       if (this._config.autofocus) {
         this._config.trapElement.focus();
       }
-      EventHandler.off(document, EVENT_KEY); // guard against infinite focus loop
-      EventHandler.on(document, EVENT_FOCUSIN, (event) => this._handleFocusin(event));
-      EventHandler.on(document, EVENT_KEYDOWN_TAB, (event) => this._handleKeydown(event));
+
+      EventHandler__default.default.off(document, EVENT_KEY); // guard against infinite focus loop
+
+      EventHandler__default.default.on(document, EVENT_FOCUSIN, (event) =>
+        this._handleFocusin(event)
+      );
+      EventHandler__default.default.on(document, EVENT_KEYDOWN_TAB, (event) =>
+        this._handleKeydown(event)
+      );
       this._isActive = true;
     }
+
     deactivate() {
       if (!this._isActive) {
         return;
       }
-      this._isActive = false;
-      EventHandler.off(document, EVENT_KEY);
-    }
 
-    // Private
+      this._isActive = false;
+      EventHandler__default.default.off(document, EVENT_KEY);
+    } // Private
+
     _handleFocusin(event) {
       const { trapElement } = this._config;
+
       if (
         event.target === document ||
         event.target === trapElement ||
@@ -99,7 +113,9 @@
       ) {
         return;
       }
-      const elements = SelectorEngine.focusableChildren(trapElement);
+
+      const elements = SelectorEngine__default.default.focusableChildren(trapElement);
+
       if (elements.length === 0) {
         trapElement.focus();
       } else if (this._lastTabNavDirection === TAB_NAV_BACKWARD) {
@@ -108,10 +124,12 @@
         elements[0].focus();
       }
     }
+
     _handleKeydown(event) {
       if (event.key !== TAB_KEY) {
         return;
       }
+
       this._lastTabNavDirection = event.shiftKey ? TAB_NAV_BACKWARD : TAB_NAV_FORWARD;
     }
   }

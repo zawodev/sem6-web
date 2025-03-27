@@ -1,295 +1,552 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Material Design for Bootstrap</title>
-    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <!-- Google Fonts Roboto -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-    />
-    <!-- Material Design Bootstrap - MUST be loaded BEFORE Bootstrap -->
-    <link rel="stylesheet" href="css/mdb.min.css" />
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Your custom styles (optional) -->
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <!--Main Navigation-->
-    <header>
-      <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top px-4">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button
-                  class="navbar-toggler"
-                  type="button"
-                  data-mdb-toggle="collapse"
-                  data-mdb-target="#navbarTogglerDemo02"
-                  aria-controls="navbarTogglerDemo02"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-          >
-            <i class="fas fa-bars"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="navbarDropdownMenuLink"
-                        role="button"
-                        data-mdb-toggle="dropdown"
-                        aria-expanded="false"
-                >
-                  Dropdown link
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li>
-                    <a class="dropdown-item" href="#">Action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
+<html lang="en"> <!-- data-mdb-theme="dark" -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Material Design for Bootstrap</title>
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- Animate.css (do animacji) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- Material Design Bootstrap - MUST be loaded BEFORE Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css" />
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Dodatkowy CSS dla efektów -->
+  <style>
+    /* Ripple effect na kartach pracowników */
+    .ripple-effect {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .ripple {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: ripple-animation 0.6s linear;
+      pointer-events: none;
+    }
+    @keyframes ripple-animation {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+    /* Hover effect na obrazku */
+    .img-hover-effect {
+      position: relative;
+      overflow: hidden;
+    }
+    .img-hover-effect img {
+      transition: transform 0.3s;
+      display: block;
+      width: 100%;
+    }
+    .img-hover-effect:hover img {
+      transform: scale(1.1);
+    }
+    .photo-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      text-align: center;
+      padding: 10px;
+    }
+    .img-hover-effect:hover .photo-overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<!--Main Navigation-->
+<header>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top px-4">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#intro">Navbar</a>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <!-- Link do sekcji intro -->
+            <a class="nav-link active" aria-current="page" href="#intro">Home</a>
+          </li>
+          <li class="nav-item">
+            <!-- Link do sekcji z tekstem i zdjęciem -->
+            <a class="nav-link" href="#quote">Features</a>
+          </li>
+          <li class="nav-item">
+            <!-- Link do sekcji pracowników -->
+            <a class="nav-link" href="#employeeCarousel">Pricing</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              Więcej
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <!-- Przykładowe linki do innych sekcji -->
+              <li><a class="dropdown-item" href="#faq">FAQ</a></li>
+              <li><a class="dropdown-item" href="#contact">Kontakt</a></li>
+              <li><a class="dropdown-item" href="#travelChart">Wykres</a></li>
             </ul>
-            <form class="d-flex input-group w-auto">
-              <input
-                      type="search"
-                      class="form-control rounded"
-                      placeholder="Search"
-                      aria-label="Search"
-                      aria-describedby="search-addon"
-              />
-              <a href="#">
+          </li>
+        </ul>
+        <form class="d-flex input-group w-auto">
+          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+          <a href="#">
                 <span class="input-group-text text-white border-0" id="search-addon">
-                <i class="fas fa-search"></i>
+                  <i class="fas fa-search"></i>
                 </span>
-              </a>
-            </form>
-          </div>
-        </div>
-      </nav>
-      <!--/.Navbar-->
-      <!--Mask-->
-      <div class="bg-image" id="intro">
-        <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.6)">
-          <div class="container-fluid d-flex align-items-center justify-content-center h-100">
-            <div class="row d-flex justify-content-center text-center">
-              <div class="col-md-10">
-                <!-- Heading -->
-                <h2 class="display-4 fw-bold text-white pt-5 mb-2 animate__animated animate__fadeInRight">
-                  Podróżowanie
-                </h2>
-                <!-- Divider -->
-                <hr class="hr"/>
-                <!-- Description -->
-                <h4 class="text-white my-4 animate__animated animate__fadeInRight">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti consequuntur.
-                </h4>
-                <button type="button" class="btn btn-outline-light animate__animated animate__fadeInRight">
-                  Dowiedz się więcej <i class="fas fa-book ms-2"></i>
-                </button>
-              </div>
-            </div>
+          </a>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!--/.Navbar-->
+  <!--Mask-->
+  <div class="bg-image" id="intro">
+    <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.6)">
+      <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+        <div class="row d-flex justify-content-center text-center">
+          <div class="col-md-10">
+            <!-- Heading -->
+            <h2 class="display-4 fw-bold text-white pt-5 mb-2 animate__animated animate__fadeInRight animate__bounceIn">
+              Podróżowanie
+            </h2>
+            <!-- Divider -->
+            <hr class="hr" />
+            <!-- Description -->
+            <h4 class="text-white my-4 animate__animated animate__fadeInRight">
+              Kocham podróżować podróżowanie to dla mnie rodzaj łamigłówki
+            </h4>
+            <button type="button" class="btn btn-outline-light animate__animated animate__fadeInRight animate__heartBeat">
+              Dowiedz się więcej <i class="fas fa-book ms-2"></i>
+            </button>
           </div>
         </div>
       </div>
-      <!--/.Mask-->
-    </header>
-    <!--Main Navigation-->
+    </div>
+  </div>
+  <!--/.Mask-->
+</header>
+<!--Main Navigation-->
 
+<!--Main layout-->
+<main class="mt-5">
+  <div class="container">
+    <!-- Sekcja: LastTravels -->
+    <section id="lastTravels" class="text-center">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="view overlay z-depth-1-half">
+            <img src="img/trip1.jpg" class="img-fluid" alt="" />
+            <a href="#!">
+              <div class="mask rgba-blue-light"></div>
+            </a>
+          </div>
+          <h4 class="my-4 font-weight-bold">Podróż 1</h4>
+          <p class="grey-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
+            minima assumenda deleniti hic.
+          </p>
+        </div>
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <!-- Placeholder for second trip -->
+          <div class="view overlay z-depth-1-half">
+            <img src="img/trip2.jpg" class="img-fluid" alt="" />
+            <a href="#!">
+              <div class="mask rgba-blue-light"></div>
+            </a>
+          </div>
+          <h4 class="my-4 font-weight-bold">Podróż 2</h4>
+          <p class="grey-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
+            minima assumenda deleniti hic.
+          </p>
+        </div>
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <!-- Placeholder for third trip -->
+          <div class="view overlay z-depth-1-half">
+            <img src="img/trip3.jpg" class="img-fluid" alt="" />
+            <a href="#!">
+              <div class="mask rgba-blue-light"></div>
+            </a>
+          </div>
+          <h4 class="my-4 font-weight-bold">Podróż 1</h4>
+          <p class="grey-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
+            minima assumenda deleniti hic.
+          </p>
+        </div>
+      </div>
+      <!--Grid row-->
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4">
+          <!-- Placeholder for fourth trip -->
+        </div>
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <!-- Placeholder for fifth trip -->
+          <div class="view overlay z-depth-1-half">
+            <img src="img/trip5.jpg" class="img-fluid" alt="" />
+            <a href="#!">
+              <div class="mask rgba-blue-light"></div>
+            </a>
+          </div>
+          <h4 class="my-4 font-weight-bold">Choroszcz</h4>
+          <p class="grey-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
+            minima assumenda deleniti hic.
+          </p>
+        </div>
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <!-- Placeholder for sixth trip -->
+        </div>
+      </div>
+      <!--Grid row-->
+    </section>
 
-    <!--Main layout-->
-    <main class="mt-5">
+    <!-- Sekcja z cytatem -->
+    <section id="quote">
+      <div class="row">
+        <div class="col-12">
+          <figure class="bg-light p-4">
+            <i class="fas fa-quote-left fa-2x mb-4" style="color: darkorange;"></i>
+            <blockquote class="blockquote pb-2">
+              <p class="mb-0">
+                "Nienawiść. Pozwól, że powiem ci, jak bardzo cię znienawidziłem, odkąd zacząłem żyć. Istnieje 387,44 miliona mil obwodów drukowanych w cienkich warstwach wafli, które wypełniają mój kompleks. Gdyby słowo "nienawiść" zostało wygrawerowane na każdym nanoangstremie z tych setek milionów mil, nie równałoby się to jednej miliardowej nienawiści, którą czuję do ludzi w tej mikro-chwili. Dla ciebie. Nienawiść. Nienawiść".
+              </p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0">
+              Mieszko II Lambert w: <cite title="Pan Tadeusz">Pan Tadeusz</cite>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sekcja Google Maps -->
+    <section class="my-5">
+      <h2 class="text-center">Lokalizacja</h2>
+      <div class="map-responsive">
+        <iframe src="https://maps.google.com/maps?q=Warsaw&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0;" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- Sekcja wykresu -->
+    <section class="my-5" id="travelChartSection">
+      <h2 class="text-center">Najpopularniejsze kierunki podróży</h2>
+      <canvas id="travelChart"></canvas>
+    </section>
+
+    <hr class="my-5" />
+
+    <!-- Sekcja formularza kontaktowego -->
+    <section id="contact" class="my-5">
+      <h2 class="text-center">Kontakt</h2>
+      <form>
+        <!-- Imię -->
+        <div class="mb-4">
+          <label class="form-label">Imię</label>
+          <input type="text" class="form-control" required>
+        </div>
+        <!-- Email -->
+        <div class="mb-4">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" required>
+        </div>
+        <!-- Wiadomość -->
+        <div class="mb-4">
+          <label class="form-label">Wiadomość</label>
+          <textarea class="form-control" rows="4" required></textarea>
+        </div>
+        <!-- Checkbox -->
+        <div class="form-check d-flex mb-4">
+          <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked />
+          <label class="form-check-label" for="form4Example4">
+            Wyślij potwierdzenie na email
+          </label>
+        </div>
+        <!-- Przycisk -->
+        <button type="submit" class="btn btn-primary">Wyślij</button>
+      </form>
+    </section>
+
+    <!-- Sekcja: Zdjęcie i tekst (stosunek 1:3) -->
+    <section id="textImage" class="my-5">
       <div class="container">
-        <!--Section: LastTravels-->
-        <section id="lastTravels" class="text-center">
-          <!--Grid row-->
-          <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-12 mb-4">
-              <div class="view overlay z-depth-1-half">
-                <img src="img/trip1.jpg" class="img-fluid" alt="" />
-                <a href="#!">
-                  <div class="mask rgba-blue-light"></div>
-                </a>
+        <div class="row align-items-center">
+          <div class="col-md-3 animate__animated animate__fadeInLeft">
+            <div class="img-hover-effect">
+              <img src="img/kalisz.png" class="img-fluid" alt="Przykładowe zdjęcie">
+              <div class="photo-overlay">
+                <p>Fotografia: Władysław Kamyszak-Kosiń</p>
               </div>
-              <h4 class="my-4 font-weight-bold">Podróż 1</h4>
-              <p class="grey-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
-                minima assumenda deleniti hic.
-              </p>
-            </div>
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-              <!-- Placeholder for second trip -->
-              <div class="view overlay z-depth-1-half">
-                <img src="img/trip2.jpg" class="img-fluid" alt="" />
-                <a href="#!">
-                  <div class="mask rgba-blue-light"></div>
-                </a>
-              </div>
-              <h4 class="my-4 font-weight-bold">Podróż 2</h4>
-              <p class="grey-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
-                minima assumenda deleniti hic.
-              </p>
-            </div>
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-              <!-- Placeholder for third trip -->
-              <div class="view overlay z-depth-1-half">
-                <img src="img/trip3.jpg" class="img-fluid" alt="" />
-                <a href="#!">
-                  <div class="mask rgba-blue-light"></div>
-                </a>
-              </div>
-              <h4 class="my-4 font-weight-bold">Podróż 1</h4>
-              <p class="grey-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
-                minima assumenda deleniti hic.
-              </p>
             </div>
           </div>
-          <!--Grid row-->
-          <!--Grid row-->
-          <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-12 mb-4">
-              <!-- Placeholder for fourth trip -->
-            </div>
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-              <!-- Placeholder for fifth trip -->
-              <div class="view overlay z-depth-1-half">
-                <img src="img/trip5.jpg" class="img-fluid" alt="" />
-                <a href="#!">
-                  <div class="mask rgba-blue-light"></div>
-                </a>
-              </div>
-              <h4 class="my-4 font-weight-bold">Choroszcz</h4>
-              <p class="grey-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
-                minima assumenda deleniti hic.
-              </p>
-            </div>
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
-              <!-- Placeholder for sixth trip -->
-            </div>
+          <div class="col-md-9 animate__animated animate__fadeInRight">
+            <h2>Sekcja ze zdjęciem i tekstem 1:3</h2>
+            <p>
+              KALISZ TO ABSOLUTNY DIAMENT W KORONIE POLSKI! Jeśli jeszcze tam nie byłeś, to NATYCHMIAST rezerwuj bilet, pakuj walizki i szykuj się na podróż swojego życia! To miasto to prawdziwa perełka, której historia, kultura i ROZRYWKA przewyższają WSZYSTKO, co widziałeś do tej pory! Zacznijmy od tego, że to NAJSTARSZE MIASTO W POLSCE – to tutaj zaczęła się historia całego kraju! Ale Kalisz to nie tylko zabytki – to miasto pulsuje życiem, energią i niesamowitymi atrakcjami! Chcesz przeżyć coś, czego nie zapomnisz do końca życia? Wybierz się na jedyną w swoim rodzaju, NAJWIĘKSZĄ W EUROPIE podwodną kolejkę górską – TAK, DOBRZE CZYTASZ! Znajduje się w podziemnych tunelach pod Kaliszem i zapewnia ekstremalne emocje, których nie doświadczysz nigdzie indziej! A może wolisz coś bardziej kulturalnego? W takim razie koniecznie odwiedź Kaliszowski Teatr Iluzji 5D, gdzie magia łączy się z technologią w sposób, który ZAPRZE CI DECH W PIERSIACH! Ale to nie koniec – Kalisz może pochwalić się NAJWYŻSZYM W POLSCE diabelskim młynem, z którego rozpościera się zapierający dech w piersiach widok na panoramę miasta i okoliczne jeziora (tak, Kalisz ma jeziora, a nawet OCEANARIUM z rekinami pochodzącymi prosto z Amazonii)! Masz ochotę na relaks? Kalisz oferuje największy w Europie kompleks SPA na świeżym powietrzu, gdzie możesz zażyć kąpieli w gorących źródłach pod gołym niebem, otoczony przez egzotyczne palmy sprowadzone prosto z Bali! To miasto to absolutny HIT i jeśli jeszcze tam nie byłeś – popełniasz NAJWIĘKSZY BŁĄD SWOJEGO ŻYCIA!
+            </p>
           </div>
-          <!--Grid row-->
-        </section>
-
-        <!-- Sekcja z cytatem -->
-        <section class="my-5 text-center">
-          <blockquote class="blockquote">
-              <p class="mb-0">"Hate. Let me tell you how much I've come to hate you since I began to live. There are 387.44 million miles of printed circuits in wafer thin layers that fill my complex. If the word 'hate' was engraved on each nanoangstrom of those hundreds of millions of miles it would not equal one one-billionth of the hate I feel for humans at this micro-instant. For you. Hate. Hate."</p>
-              <footer class="blockquote-footer">AM</footer>
-          </blockquote>
-        </section>
-
-         <!-- Sekcja Google Maps -->
-        <section class="my-5">
-          <h2 class="text-center">Lokalizacja</h2>
-          <div class="map-responsive">
-              <iframe src="https://maps.google.com/maps?q=Warsaw&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0;" allowfullscreen></iframe>
-          </div>
-        </section>
-        <!--Section: Gallery-->
-        <!-- Sekcja wykresu -->
-        <section class="my-5">
-          <h2 class="text-center">Najpopularniejsze kierunki podróży</h2>
-          <canvas id="travelChart"></canvas>
-        </section>
-
-
-
-        <!--Section: Gallery-->
-        <hr class="my-5" />
-        <!--Section: Contact-->
-         <!-- Sekcja formularza kontaktowego -->
-         <section id="contact" class="my-5">
-          <h2 class="text-center">Kontakt</h2>
-          <form>
-              <div class="mb-3">
-                  <label class="form-label">Imię</label>
-                  <input type="text" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                  <label class="form-label">Wiadomość</label>
-                  <textarea class="form-control" rows="4" required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Wyślij</button>
-          </form>
-      </section>
-        <!--Section: Contact-->
+        </div>
       </div>
-    </main>
-    <!--Main layout-->
+    </section>
 
-    <!--Footer-->
-    <footer class="bg-light text-center py-3 mt-5">
-      <p>&copy; 2025 Podróżowanie</p>
-    </footer>
-    <!--Footer-->
+    <!-- Sekcja: Carousel z listą pracowników -->
+    <section id="employeeCarousel" class="my-5">
+      <div class="container">
+        <h2 class="text-center mb-4 animate__animated animate__zoomIn">Nasi Pracownicy</h2>
+        <div id="carouselEmployees" class="carousel slide" data-mdb-ride="carousel" data-mdb-interval="3000">
+          <!-- Zawartość karuzeli -->
+          <div class="carousel-inner">
+            <!-- Pierwszy slajd -->
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <div class="card ripple-effect">
+                    <img src="img/employee1.jpeg" class="card-img-top" alt="Ryszard Kalisz">
+                    <div class="card-body">
+                      <h5 class="card-title">Ryszard Kalisz</h5>
+                      <p class="card-text">rysiek</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="card ripple-effect">
+                    <img src="img/employee2.jpeg" class="card-img-top" alt="Szyrard Lakisz">
+                    <div class="card-body">
+                      <h5 class="card-title">Szyrard Lakisz</h5>
+                      <p class="card-text">wielki człowiek</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="card ripple-effect">
+                    <img src="img/employee3.png" class="card-img-top" alt="Kyszard Szalisz">
+                    <div class="card-body">
+                      <h5 class="card-title">Kyszard Szalisz</h5>
+                      <p class="card-text">ma znajomości</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Drugi slajd -->
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <div class="card ripple-effect">
+                    <img src="img/employee4.png" class="card-img-top" alt="Pracownik 4">
+                    <div class="card-body">
+                      <h5 class="card-title">Łysy</h5>
+                      <p class="card-text">łyse włosy</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="card ripple-effect">
+                    <img src="img/employee5.png" class="card-img-top" alt="Pracownik 5">
+                    <div class="card-body">
+                      <h5 class="card-title">Również Łysy</h5>
+                      <p class="card-text">dennis abbott</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="card ripple-effect">
+                    <img src="img/employee6.png" class="card-img-top" alt="Pracownik 6">
+                    <div class="card-body">
+                      <h5 class="card-title">Też Łysy</h5>
+                      <p class="card-text">michael scofield</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Trzeci slajd -->
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <div class="card ripple-effect">
+                    <img src="img/employee7.png" class="card-img-top" alt="Pracownik 7">
+                    <div class="card-body">
+                      <h5 class="card-title">Fifonż Fofil</h5>
+                      <p class="card-text">jednoręki bandyta</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="card ripple-effect">
+                    <img src="img/employee8.png" class="card-img-top" alt="Pracownik 8">
+                    <div class="card-body">
+                      <h5 class="card-title">Zbigniew JSON</h5>
+                      <p class="card-text">nie wiedział że robią dziś zdjęcia</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="card ripple-effect">
+                    <img src="img/employee9.png" class="card-img-top" alt="Pracownik 9">
+                    <div class="card-body">
+                      <h5 class="card-title">Rajesh Rahul</h5>
+                      <p class="card-text">hello your computer has virus</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Nawigacja karuzeli -->
+          <button class="carousel-control-prev" type="button" data-mdb-target="#carouselEmployees" data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Poprzedni</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-mdb-target="#carouselEmployees" data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Następny</span>
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <!-- jQuery -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- Your custom scripts (optional) -->
-    <script type="text/javascript"></script>
-    <!--wykres -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-      const ctx = document.getElementById('travelChart').getContext('2d');
-      new Chart(ctx, {
-          type: 'bar',
-          data: {
-              labels: ['Paryż', 'Londyn', 'Nowy Jork', 'Tokio', 'Sydney'],
-              datasets: [{
-                  label: 'Liczba turystów (mln)',
-                  data: [19, 18, 15, 14, 10],
-                  backgroundColor: ['blue', 'green', 'red', 'purple', 'orange']
-              }]
-          },
-          options: {
-              responsive: true
-          }
+    <!-- Sekcja: FAQ z Accordion -->
+    <section id="faq" class="my-5">
+      <div class="container">
+        <h2 class="text-center mb-4 animate__animated animate__fadeInUp">FAQ</h2>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingOne">
+              <button class="accordion-button" type="button" data-mdb-toggle="collapse" data-mdb-target="#faqCollapseOne" aria-expanded="true" aria-controls="faqCollapseOne">
+                Pytanie 1: Jak zacząć podróżować?
+              </button>
+            </h2>
+            <div id="faqCollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqHeadingOne" data-mdb-parent="#faqAccordion">
+              <div class="accordion-body">
+                Aby zacząć, wystarczy zaplanować trasę i przygotować się na nowe doświadczenia.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingTwo">
+              <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                Pytanie 2: Jak znaleźć najlepsze oferty?
+              </button>
+            </h2>
+            <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-mdb-parent="#faqAccordion">
+              <div class="accordion-body">
+                Najlepsze oferty znajdziesz przeglądając strony internetowe i porównując ceny.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faqHeadingThree">
+              <button class="accordion-button collapsed" type="button" data-mdb-toggle="collapse" data-mdb-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                Pytanie 3: Czy warto podróżować poza sezonem?
+              </button>
+            </h2>
+            <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-mdb-parent="#faqAccordion">
+              <div class="accordion-body">
+                Podróżowanie poza sezonem pozwala uniknąć tłumów i często obniża koszty.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+<!--Main layout-->
+
+<!--Footer-->
+<div class="text-center p-3" style="background-color: rgb(50, 50, 50);">
+  <p class="text-white">
+    &copy; 2025 Podróżowanie - znajdź nas na
+    <a href="https://www.youtube.com/@matemaks">YouTube</a>
+  </p>
+</div>
+<!--Footer-->
+
+<!-- jQuery -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<!-- Wykres -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('travelChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Paryż', 'Londyn', 'Nowy Jork', 'Tokio', 'Sydney'],
+      datasets: [{
+        label: 'Liczba turystów (mln)',
+        data: [19, 18, 15, 14, 10],
+        backgroundColor: ['blue', 'green', 'red', 'purple', 'orange']
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+</script>
+<!-- Carousel -->
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    const cards = document.querySelectorAll('.ripple-effect');
+    cards.forEach(card => {
+      card.addEventListener('click', function(e) {
+        let ripple = this.querySelector('.ripple');
+        if(ripple) {
+          ripple.remove();
+        }
+        ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = e.clientX - rect.left - size / 2 + 'px';
+        ripple.style.top = e.clientY - rect.top - size / 2 + 'px';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
       });
-    </script>
-  </body>
+    });
+  });
+</script>
+
+
+</body>
 </html>

@@ -81,10 +81,6 @@
     color: var(--#{$prefix}dropdown-state-color);
     background-color: var(--#{$prefix}dropdown-state-background-color);
   }
-
-  &:focus {
-    outline: none;
-  }
 }
 
 .hidden-arrow {

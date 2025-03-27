@@ -6,16 +6,6 @@
   --#{$prefix}list-group-item-transition-time: #{$list-group-item-transition-time};
 }
 
-.list-group-item {
-  --#{$prefix}list-group-item-active-margin-top: #{$list-group-active-margin-top};
-
-  & + .list-group-item {
-    &.active {
-      margin-top: var(--#{$prefix}list-group-item-active-margin-top);
-    }
-  }
-}
-
 .list-group-item-action {
   transition: var(--#{$prefix}list-group-item-transition-time);
 
@@ -66,13 +56,13 @@
   }
 }
 
-@each $color, $value in $theme-colors {
+@each $color, $value in $alerts {
   .list-group-item-#{$color} {
-    background-color: var(--#{$prefix}#{$color}-bg-subtle);
-    color: var(--#{$prefix}#{$color}-text-emphasis);
+    background-color: map-get($value, background-color);
+    color: map-get($value, text-color);
 
     i {
-      color: var(--#{$prefix}#{$color}-link-emphasis);
+      color: map-get($value, icon-color);
     }
   }
 }

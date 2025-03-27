@@ -19,20 +19,20 @@
   position: relative;
 }
 
-@each $color, $value in $theme-colors {
+@each $color, $value in $alerts {
   .alert-#{$color} {
-    background-color: var(--#{$prefix}#{$color}-bg-subtle);
-    color: var(--#{$prefix}#{$color}-text-emphasis);
+    background-color: map-get($value, background-color);
+    color: map-get($value, text-color);
 
     i {
-      color: var(--#{$prefix}#{$color}-text-emphasis);
+      color: map-get($value, icon-color);
     }
 
     .alert-link {
-      color: var(--#{$prefix}#{$color}-text-emphasis);
+      color: map-get($value, text-color);
 
       &:hover {
-        color: rgba(var(--#{$prefix}#{$color}-text-emphasis), var(--#{$prefix}text-hover-opacity));
+        color: shift-color(map-get($value, text-color), 20%);
       }
     }
   }

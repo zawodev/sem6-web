@@ -1,10 +1,8 @@
-import { element, typeCheckConfig } from '../mdb/util/index';
+import { element, getjQuery, typeCheckConfig, onDOMContentLoaded } from '../mdb/util/index';
 import Data from '../mdb/dom/data';
 import EventHandler from '../mdb/dom/event-handler';
 import Manipulator from '../mdb/dom/manipulator';
 import SelectorEngine from '../mdb/dom/selector-engine';
-import BaseComponent from './base-component';
-import { bindCallbackEventsIfNeeded } from '../autoinit/init';
 
 /**
  * ------------------------------------------------------------------------
@@ -17,8 +15,7 @@ const DATA_KEY = 'mdb.ripple';
 const CLASSNAME_RIPPLE = 'ripple-surface';
 const CLASSNAME_RIPPLE_WAVE = 'ripple-wave';
 const CLASSNAME_RIPPLE_WRAPPER = 'input-wrapper';
-const SELECTOR_BTN = '.btn';
-const SELECTOR_COMPONENT = [SELECTOR_BTN, `[data-mdb-${NAME}-init]`];
+const SELECTOR_COMPONENT = ['.btn', '.ripple'];
 
 const CLASSNAME_UNBOUND = 'ripple-surface-unbound';
 const GRADIENT =
@@ -61,15 +58,14 @@ const DefaultType = {
  * ------------------------------------------------------------------------
  */
 
-class Ripple extends BaseComponent {
+class Ripple {
   constructor(element, options) {
-    super(element);
+    this._element = element;
     this._options = this._getConfig(options);
 
     if (this._element) {
+      Data.setData(element, DATA_KEY, this);
       Manipulator.addClass(this._element, CLASSNAME_RIPPLE);
-      Manipulator.setDataAttribute(this._element, `${this.constructor.NAME}-initialized`, true);
-      bindCallbackEventsIfNeeded(this.constructor);
     }
 
     this._clickHandler = this._createRipple.bind(this);
@@ -93,10 +89,10 @@ class Ripple extends BaseComponent {
   }
 
   dispose() {
-    EventHandler.off(this._element, 'mousedown', this._clickHandler);
-    Manipulator.removeDataAttribute(this._element, `${this.constructor.NAME}-initialized`);
-
-    super.dispose();
+    Data.removeData(this._element, DATA_KEY);
+    EventHandler.off(this._element, 'click', this._clickHandler);
+    this._element = null;
+    this._options = null;
   }
 
   // Private
@@ -108,11 +104,6 @@ class Ripple extends BaseComponent {
         this._element = SelectorEngine.closest(event.target, selector);
       }
     });
-
-    const dataAttributes = Manipulator.getDataAttributes(this._element);
-    if (this._element.classList.contains('btn') && dataAttributes.rippleInit === false) {
-      return;
-    }
 
     this._options = this._getConfig();
 
@@ -174,10 +165,6 @@ class Ripple extends BaseComponent {
   }
 
   _createRipple(event) {
-    if (this._element === null) {
-      return;
-    }
-
     if (!Manipulator.hasClass(this._element, CLASSNAME_RIPPLE)) {
       Manipulator.addClass(this._element, CLASSNAME_RIPPLE);
     }
@@ -430,6 +417,47 @@ class Ripple extends BaseComponent {
       return null;
     });
   }
+
+  static getInstance(element) {
+    return Data.getData(element, DATA_KEY);
+  }
+
+  static getOrCreateInstance(element, config = {}) {
+    return (
+      this.getInstance(element) || new this(element, typeof config === 'object' ? config : null)
+    );
+  }
 }
+
+/**
+ * ------------------------------------------------------------------------
+ * Data Api implementation - auto initialization
+ * ------------------------------------------------------------------------
+ */
+
+SELECTOR_COMPONENT.forEach((selector) => {
+  EventHandler.one(document, 'mousedown', selector, Ripple.autoInitial(new Ripple()));
+});
+
+/**
+ * ------------------------------------------------------------------------
+ * jQuery
+ * ------------------------------------------------------------------------
+ * add .ripple to jQuery only if jQuery is present
+ */
+
+onDOMContentLoaded(() => {
+  const $ = getjQuery();
+
+  if ($) {
+    const JQUERY_NO_CONFLICT = $.fn[NAME];
+    $.fn[NAME] = Ripple.jQueryInterface;
+    $.fn[NAME].Constructor = Ripple;
+    $.fn[NAME].noConflict = () => {
+      $.fn[NAME] = JQUERY_NO_CONFLICT;
+      return Ripple.jQueryInterface;
+    };
+  }
+});
 
 export default Ripple;

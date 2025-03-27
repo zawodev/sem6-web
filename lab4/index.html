@@ -27,30 +27,24 @@
     <!--Main Navigation-->
     <header>
       <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top">
-        <div class="container">
-          <!-- Navbar brand -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top px-4">
+        <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
-          <!-- Collapse button -->
           <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#basicExampleNav"
-            aria-controls="basicExampleNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+                  class="navbar-toggler"
+                  type="button"
+                  data-mdb-toggle="collapse"
+                  data-mdb-target="#navbarTogglerDemo02"
+                  aria-controls="navbarTogglerDemo02"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars"></i>
           </button>
-          <!-- Collapsible content -->
-          <div class="collapse navbar-collapse" id="basicExampleNav">
-            <!-- Links -->
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home
-                  <span class="sr-only">(current)</span>
-                </a>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
@@ -58,66 +52,76 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
               </li>
-              <!-- Dropdown -->
               <li class="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
-                  id="navbarDropdownMenuLink"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="navbarDropdownMenuLink"
+                        role="button"
+                        data-mdb-toggle="dropdown"
+                        aria-expanded="false"
                 >
-                  Dropdown
+                  Dropdown link
                 </a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li>
+                    <a class="dropdown-item" href="#">Action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
               </li>
             </ul>
-            <!-- Links -->
-            <form class="form-inline">
-              <div class="md-form my-0">
-                <input
-                  class="form-control mr-sm-2"
-                  type="text"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-              </div>
+            <form class="d-flex input-group w-auto">
+              <input
+                      type="search"
+                      class="form-control rounded"
+                      placeholder="Search"
+                      aria-label="Search"
+                      aria-describedby="search-addon"
+              />
+              <a href="#">
+                <span class="input-group-text text-white border-0" id="search-addon">
+                <i class="fas fa-search"></i>
+                </span>
+              </a>
             </form>
           </div>
-          <!-- Collapsible content -->
         </div>
       </nav>
       <!--/.Navbar-->
-    </header>
-    <!--Main Navigation-->
-
-    <!--Mask-->
-    <div id="intro" class="view">
-      <div class="mask rgba-stylish-strong">
-        <div class="container-fluid d-flex align-items-center justify-content-center h-100">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-md-10">
-              <!-- Heading -->
-              <h2 class="display-4 font-weight-bold white-text pt-5 mb-2">Podróżowanie</h2>
-              <!-- Divider -->
-              <hr class="hr-light" />
-              <!-- Description -->
-              <h4 class="white-text my-4">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti consequuntur.
-              </h4>
-              <button type="button" class="btn btn-outline-white">
-                Dowiedz się więcej <i class="fas fa-book ml-2"></i>
-              </button>
+      <!--Mask-->
+      <div class="bg-image" id="intro">
+        <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.6)">
+          <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+            <div class="row d-flex justify-content-center text-center">
+              <div class="col-md-10">
+                <!-- Heading -->
+                <h2 class="display-4 fw-bold text-white pt-5 mb-2 animate__animated animate__fadeInRight">
+                  Podróżowanie
+                </h2>
+                <!-- Divider -->
+                <hr class="hr"/>
+                <!-- Description -->
+                <h4 class="text-white my-4 animate__animated animate__fadeInRight">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti consequuntur.
+                </h4>
+                <button type="button" class="btn btn-outline-light animate__animated animate__fadeInRight">
+                  Dowiedz się więcej <i class="fas fa-book ms-2"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!--/.Mask-->
+      <!--/.Mask-->
+    </header>
+    <!--Main Navigation-->
+
 
     <!--Main layout-->
     <main class="mt-5">
@@ -143,10 +147,32 @@
             <!--Grid column-->
             <div class="col-lg-4 col-md-6 mb-4">
               <!-- Placeholder for second trip -->
+              <div class="view overlay z-depth-1-half">
+                <img src="img/trip2.jpg" class="img-fluid" alt="" />
+                <a href="#!">
+                  <div class="mask rgba-blue-light"></div>
+                </a>
+              </div>
+              <h4 class="my-4 font-weight-bold">Podróż 2</h4>
+              <p class="grey-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
+                minima assumenda deleniti hic.
+              </p>
             </div>
             <!--Grid column-->
             <div class="col-lg-4 col-md-6 mb-4">
               <!-- Placeholder for third trip -->
+              <div class="view overlay z-depth-1-half">
+                <img src="img/trip3.jpg" class="img-fluid" alt="" />
+                <a href="#!">
+                  <div class="mask rgba-blue-light"></div>
+                </a>
+              </div>
+              <h4 class="my-4 font-weight-bold">Podróż 1</h4>
+              <p class="grey-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
+                minima assumenda deleniti hic.
+              </p>
             </div>
           </div>
           <!--Grid row-->
@@ -159,6 +185,17 @@
             <!--Grid column-->
             <div class="col-lg-4 col-md-6 mb-4">
               <!-- Placeholder for fifth trip -->
+              <div class="view overlay z-depth-1-half">
+                <img src="img/trip5.jpg" class="img-fluid" alt="" />
+                <a href="#!">
+                  <div class="mask rgba-blue-light"></div>
+                </a>
+              </div>
+              <h4 class="my-4 font-weight-bold">Choroszcz</h4>
+              <p class="grey-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam
+                minima assumenda deleniti hic.
+              </p>
             </div>
             <!--Grid column-->
             <div class="col-lg-4 col-md-6 mb-4">
@@ -167,26 +204,61 @@
           </div>
           <!--Grid row-->
         </section>
-        <!--Section: LastTravels-->
-        <hr class="my-5" />
-        <!--Section: Gallery-->
-        <section id="gallery">
-          <!-- Gallery content goes here -->
+
+        <!-- Sekcja z cytatem -->
+        <section class="my-5 text-center">
+          <blockquote class="blockquote">
+              <p class="mb-0">"Hate. Let me tell you how much I've come to hate you since I began to live. There are 387.44 million miles of printed circuits in wafer thin layers that fill my complex. If the word 'hate' was engraved on each nanoangstrom of those hundreds of millions of miles it would not equal one one-billionth of the hate I feel for humans at this micro-instant. For you. Hate. Hate."</p>
+              <footer class="blockquote-footer">AM</footer>
+          </blockquote>
         </section>
+
+         <!-- Sekcja Google Maps -->
+        <section class="my-5">
+          <h2 class="text-center">Lokalizacja</h2>
+          <div class="map-responsive">
+              <iframe src="https://maps.google.com/maps?q=Warsaw&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border:0;" allowfullscreen></iframe>
+          </div>
+        </section>
+        <!--Section: Gallery-->
+        <!-- Sekcja wykresu -->
+        <section class="my-5">
+          <h2 class="text-center">Najpopularniejsze kierunki podróży</h2>
+          <canvas id="travelChart"></canvas>
+        </section>
+
+
+
         <!--Section: Gallery-->
         <hr class="my-5" />
         <!--Section: Contact-->
-        <section id="contact">
-          <!-- Contact content goes here -->
-        </section>
+         <!-- Sekcja formularza kontaktowego -->
+         <section id="contact" class="my-5">
+          <h2 class="text-center">Kontakt</h2>
+          <form>
+              <div class="mb-3">
+                  <label class="form-label">Imię</label>
+                  <input type="text" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                  <label class="form-label">Wiadomość</label>
+                  <textarea class="form-control" rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Wyślij</button>
+          </form>
+      </section>
         <!--Section: Contact-->
       </div>
     </main>
     <!--Main layout-->
 
     <!--Footer-->
-    <footer>
-      <!-- Footer content goes here -->
+    <footer class="bg-light text-center py-3 mt-5">
+      <p>&copy; 2025 Podróżowanie</p>
     </footer>
     <!--Footer-->
 
@@ -200,5 +272,24 @@
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <!-- Your custom scripts (optional) -->
     <script type="text/javascript"></script>
+    <!--wykres -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById('travelChart').getContext('2d');
+      new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: ['Paryż', 'Londyn', 'Nowy Jork', 'Tokio', 'Sydney'],
+              datasets: [{
+                  label: 'Liczba turystów (mln)',
+                  data: [19, 18, 15, 14, 10],
+                  backgroundColor: ['blue', 'green', 'red', 'purple', 'orange']
+              }]
+          },
+          options: {
+              responsive: true
+          }
+      });
+    </script>
   </body>
 </html>

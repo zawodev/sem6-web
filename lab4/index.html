@@ -74,6 +74,13 @@
       opacity: 1;
     }
   </style>
+  <style>
+    .fixed-size-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
 <!--Main Navigation-->
@@ -161,7 +168,7 @@
         <!--Grid column-->
         <div class="col-lg-4 col-md-12 mb-4">
           <div class="view overlay z-depth-1-half">
-            <img src="img/trip1.jpg" class="img-fluid" alt="" />
+            <img src="img/trip1.jpg" class="img-fluid fixed-size-img" alt="" />
             <a href="#!">
               <div class="mask rgba-blue-light"></div>
             </a>
@@ -176,7 +183,7 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <!-- Placeholder for second trip -->
           <div class="view overlay z-depth-1-half">
-            <img src="img/trip2.jpg" class="img-fluid" alt="" />
+            <img src="img/trip2.jpg" class="img-fluid fixed-size-img" alt="" />
             <a href="#!">
               <div class="mask rgba-blue-light"></div>
             </a>
@@ -191,7 +198,7 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <!-- Placeholder for third trip -->
           <div class="view overlay z-depth-1-half">
-            <img src="img/trip3.jpg" class="img-fluid" alt="" />
+            <img src="img/trip3.jpg" class="img-fluid fixed-size-img" alt="" />
             <a href="#!">
               <div class="mask rgba-blue-light"></div>
             </a>
@@ -214,7 +221,7 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <!-- Placeholder for fifth trip -->
           <div class="view overlay z-depth-1-half">
-            <img src="img/trip5.jpg" class="img-fluid" alt="" />
+            <img src="img/trip5.jpg" class="img-fluid fixed-size-img" alt="" />
             <a href="#!">
               <div class="mask rgba-blue-light"></div>
             </a>
@@ -523,7 +530,7 @@
     }
   });
 </script>
-<!-- Carousel -->
+<!-- Ripple Effect -->
 <script>
   document.addEventListener("DOMContentLoaded", function(){
     const cards = document.querySelectorAll('.ripple-effect');

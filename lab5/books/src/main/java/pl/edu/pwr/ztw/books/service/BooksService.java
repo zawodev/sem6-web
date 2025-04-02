@@ -60,4 +60,20 @@ public class BooksService implements IBooksService {
     public boolean deleteBook(int id) {
         return booksRepo.removeIf(b -> b.getId() == id);
     }
+
+    public void updateAuthorInBooks(Author updatedAuthor) {
+        for (Book book : booksRepo) {
+            if (book.getAuthor() != null && book.getAuthor().getId() == updatedAuthor.getId()) {
+                book.setAuthor(updatedAuthor);
+            }
+        }
+    }
+
+    public void removeAuthorFromBooks(int authorId) {
+        for (Book book : booksRepo) {
+            if (book.getAuthor() != null && book.getAuthor().getId() == authorId) {
+                book.setAuthor(null);
+            }
+        }
+    }
 }

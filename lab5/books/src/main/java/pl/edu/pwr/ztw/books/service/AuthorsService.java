@@ -4,6 +4,10 @@ import org.springframework.stereotype.Service;
 import pl.edu.pwr.ztw.books.model.Author;
 import pl.edu.pwr.ztw.books.service.iface.IAuthorsService;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import pl.edu.pwr.ztw.books.service.iface.IBooksService;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -19,6 +23,9 @@ public class AuthorsService implements IAuthorsService {
         authorsRepo.add(new Author(3, "Adam Mickiewicz"));
     }
 
+    @Autowired
+    private IBooksService booksService;
+    
     @Override
     public Collection<Author> getAuthors() {
         return authorsRepo;
@@ -44,6 +51,9 @@ public class AuthorsService implements IAuthorsService {
         Author existing = getAuthor(id);
         if (existing != null) {
             existing.setName(author.getName());
+            if (booksService instanceof BooksService) {
+                ((BooksService) booksService).updateAuthorInBooks(existing);
+            }
             return existing;
         }
         return null;
@@ -51,6 +61,13 @@ public class AuthorsService implements IAuthorsService {
 
     @Override
     public boolean deleteAuthor(int id) {
-        return authorsRepo.removeIf(a -> a.getId() == id);
+        Author existing = getAuthor(id);
+        if (existing == null)
+            return false;
+        boolean deleted = authorsRepo.removeIf(a -> a.getId() == id);
+        if (deleted && booksService instanceof BooksService) {
+            ((BooksService) booksService).removeAuthorFromBooks(id);
+        }
+        return deleted;
     }
 }

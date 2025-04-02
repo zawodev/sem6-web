@@ -8,11 +8,17 @@ import org.springframework.web.bind.annotation.*;
 import pl.edu.pwr.ztw.books.service.iface.IBooksService;
 import pl.edu.pwr.ztw.books.model.Book;
 
+import pl.edu.pwr.ztw.books.service.iface.IAuthorsService;
+import pl.edu.pwr.ztw.books.model.Author;
+
 @RestController
 @RequestMapping("/books")
 public class BooksController {
     @Autowired
     private IBooksService booksService;
+
+    @Autowired
+    private IAuthorsService authorsService;
 
     @Operation(summary = "pobierz wszystkie książki")
     @GetMapping
@@ -54,5 +60,21 @@ public class BooksController {
             return new ResponseEntity<>("książka usunięta", HttpStatus.OK);
         else
             return new ResponseEntity<>("książka nie znaleziona", HttpStatus.NOT_FOUND);
+    }
+
+    @Operation(summary = "zmień autora książki")
+    @PutMapping("/{id}/author/{authorId}")
+    public ResponseEntity<Object> changeBookAuthor(@PathVariable("id") int bookId,
+                                                   @PathVariable("authorId") int authorId) {
+        Book book = booksService.getBook(bookId);
+        if (book == null)
+            return new ResponseEntity<>("Książka nie znaleziona", HttpStatus.NOT_FOUND);
+
+        Author newAuthor = authorsService.getAuthor(authorId);
+        if (newAuthor == null)
+            return new ResponseEntity<>("Nowy autor nie znaleziony", HttpStatus.NOT_FOUND);
+
+        book.setAuthor(newAuthor);
+        return new ResponseEntity<>(book, HttpStatus.OK);
     }
 }

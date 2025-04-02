@@ -1,5 +1,7 @@
 package pl.edu.pwr.ztw.books.controller;
 
+import pl.edu.pwr.ztw.books.model.Reader;
+
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,13 +15,34 @@ public class LendingController {
     @Autowired
     private LendingService lendingService;
 
+    @Operation(summary = "pobierz informacje o wypożyczeniach wszystkich książek")
+    @GetMapping
+    public ResponseEntity<Object> getAllLendings() {
+        return new ResponseEntity<>(lendingService.getAllLendings(), HttpStatus.OK);
+    }
+    
+    @Operation(summary = "pobierz wypożyczającego dla danej książki")
+    @GetMapping("/{bookId}")
+    public ResponseEntity<Object> getBorrower(@PathVariable int bookId) {
+        Reader borrower = lendingService.getBorrower(bookId);
+        return borrower != null
+                ? new ResponseEntity<>(borrower, HttpStatus.OK)
+                : new ResponseEntity<>("książka nie jest wypożyczona", HttpStatus.OK);
+    }
+
     @Operation(summary = "wypożycz książkę dla czytelnika")
-    @PostMapping("/{bookId}")
-    public ResponseEntity<Object> lendBook(@PathVariable("bookId") int bookId, @RequestParam("reader") String reader) {
-        String result = lendingService.lendBook(bookId, reader);
-        if(result.startsWith("książka została wypożyczona"))
-            return new ResponseEntity<>(result, HttpStatus.OK);
-        else
-            return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+    @PutMapping("/{bookId}/borrow/{readerId}")
+    public ResponseEntity<Object> borrowBook(@PathVariable int bookId, @PathVariable int readerId) {
+        return lendingService.borrowBook(bookId, readerId)
+                ? new ResponseEntity<>("książka została wypożyczona", HttpStatus.OK)
+                : new ResponseEntity<>("książka albo czytelnik nie została znaleziona", HttpStatus.NOT_FOUND);
+    }
+
+    @Operation(summary = "zwróć książkę")
+    @PutMapping("/{bookId}/return")
+    public ResponseEntity<Object> returnBook(@PathVariable int bookId) {
+        return lendingService.returnBook(bookId)
+                ? new ResponseEntity<>("książka zwrócona", HttpStatus.OK)
+                : new ResponseEntity<>("książka nie znaleziona lub nie zwrócona", HttpStatus.NOT_FOUND);
     }
 }

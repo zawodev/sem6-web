@@ -17,10 +17,10 @@ public class LendingService {
     @Autowired
     private ReaderService readerService;
 
-    public Reader getBorrower(int bookId) {
+    public LendingInfo getLending(int bookId) {
         Book book = booksService.getBook(bookId);
         if (book != null) {
-            return book.getBorrower();
+            return new LendingInfo(book.getId(), book.getTitle(), book.getBorrower());
         }
         return null;
     }

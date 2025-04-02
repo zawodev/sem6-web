@@ -1,5 +1,6 @@
 package pl.edu.pwr.ztw.books.controller;
 
+import pl.edu.pwr.ztw.books.model.LendingInfo;
 import pl.edu.pwr.ztw.books.model.Reader;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -21,12 +22,12 @@ public class LendingController {
         return new ResponseEntity<>(lendingService.getAllLendings(), HttpStatus.OK);
     }
     
-    @Operation(summary = "pobierz wypożyczającego dla danej książki")
+    @Operation(summary = "pobierz informacje o wypożyczeniu dla danej książki")
     @GetMapping("/{bookId}")
-    public ResponseEntity<Object> getBorrower(@PathVariable int bookId) {
-        Reader borrower = lendingService.getBorrower(bookId);
-        return borrower != null
-                ? new ResponseEntity<>(borrower, HttpStatus.OK)
+    public ResponseEntity<Object> getLending(@PathVariable int bookId) {
+        LendingInfo lendingInfo = lendingService.getLending(bookId);
+        return lendingInfo != null
+                ? new ResponseEntity<>(lendingInfo, HttpStatus.OK)
                 : new ResponseEntity<>("książka nie jest wypożyczona", HttpStatus.OK);
     }
 

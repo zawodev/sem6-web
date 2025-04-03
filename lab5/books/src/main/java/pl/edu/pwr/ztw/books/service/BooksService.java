@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.edu.pwr.ztw.books.service.iface.IBooksService;
 import pl.edu.pwr.ztw.books.model.Author;
 import pl.edu.pwr.ztw.books.model.Book;
+import pl.edu.pwr.ztw.books.model.Reader;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -73,6 +74,22 @@ public class BooksService implements IBooksService {
         for (Book book : booksRepo) {
             if (book.getAuthor() != null && book.getAuthor().getId() == authorId) {
                 book.setAuthor(null);
+            }
+        }
+    }
+
+    public void updateReaderInBooks(Reader updatedReader) {
+        for (Book book : booksRepo) {
+            if (book.getReader() != null && book.getReader().getId() == updatedReader.getId()) {
+                book.setReader(updatedReader);
+            }
+        }
+    }
+
+    public void removeReaderFromBooks(int readerId) {
+        for (Book book : booksRepo) {
+            if (book.getReader() != null && book.getReader().getId() == readerId) {
+                book.setReader(null);
             }
         }
     }

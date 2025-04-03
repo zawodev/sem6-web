@@ -52,7 +52,7 @@ public class AuthorsService implements IAuthorsService {
         if (existing != null) {
             existing.setName(author.getName());
             if (booksService instanceof BooksService) {
-                ((BooksService) booksService).updateAuthorInBooks(existing);
+                ((BooksService)booksService).updateAuthorInBooks(existing);
             }
             return existing;
         }
@@ -66,7 +66,7 @@ public class AuthorsService implements IAuthorsService {
             return false;
         boolean deleted = authorsRepo.removeIf(a -> a.getId() == id);
         if (deleted && booksService instanceof BooksService) {
-            ((BooksService) booksService).removeAuthorFromBooks(id);
+            ((BooksService)booksService).removeAuthorFromBooks(id);
         }
         return deleted;
     }

@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'AppPagination', 
+  name: 'AppPagination',
   props: {
     totalItems: {
       type: Number,
@@ -35,3 +35,18 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+button {
+  padding: 10px 16px;
+  background-color: #D07070;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+span {
+  font-weight: bold;
+}
+</style>

@@ -1,66 +1,58 @@
 <template>
-  <MainLayout>
-    <div class="author-container">
-      <h1 class="page-title">Lista Autorów</h1>
+  <div class="author-container">
+    <h1 class="page-title">Lista Autorów</h1>
 
-      <table class="author-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nazwa</th>
-            <th>Akcje</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="author in paginatedAuthors" :key="author.id">
-            <td>{{ author.id }}</td>
-            <td>{{ author.name }}</td>
-            <td>
-              <button class="btn edit-btn" @click="editAuthor(author)">Edytuj</button>
-              <button class="btn delete-btn" @click="deleteAuthor(author.id)">Usuń</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <table class="author-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nazwa</th>
+          <th>Akcje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="author in paginatedAuthors" :key="author.id">
+          <td>{{ author.id }}</td>
+          <td>{{ author.name }}</td>
+          <td>
+            <button class="btn edit-btn" @click="editAuthor(author)">Edytuj</button>
+            <button class="btn delete-btn" @click="deleteAuthor(author.id)">Usuń</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <div class="pagination-wrapper">
-        <AppPagination
-          :total-items="authors.length"
-          v-model:currentPage="currentPage"
-          :page-size="pageSize"
-        />
-      </div>
-
-      <div class="form-section">
-        <h2 class="form-title">{{ isEdit ? 'Edytuj autora' : 'Dodaj nowego autora' }}</h2>
-        <form @submit.prevent="handleSubmit" class="author-form">
-          <div class="form-group">
-            <label>Nazwa:</label>
-            <input v-model="authorForm.name" required />
-          </div>
-          <div class="form-buttons">
-            <button type="submit" class="btn submit-btn">
-              {{ isEdit ? 'Aktualizuj' : 'Dodaj' }}
-            </button>
-            <button type="button" class="btn cancel-btn" v-if="isEdit" @click="cancelEdit">
-              Anuluj
-            </button>
-          </div>
-        </form>
-      </div>
+    <div class="pagination-wrapper">
+      <AppPagination :total-items="authors.length" v-model:currentPage="currentPage" :page-size="pageSize" />
     </div>
-  </MainLayout>
+
+    <div class="form-section">
+      <h2 class="form-title">{{ isEdit ? 'Edytuj autora' : 'Dodaj nowego autora' }}</h2>
+      <form @submit.prevent="handleSubmit" class="author-form">
+        <div class="form-group">
+          <label>Nazwa:</label>
+          <input v-model="authorForm.name" required />
+        </div>
+        <div class="form-buttons">
+          <button type="submit" class="btn submit-btn">
+            {{ isEdit ? 'Aktualizuj' : 'Dodaj' }}
+          </button>
+          <button type="button" class="btn cancel-btn" v-if="isEdit" @click="cancelEdit">
+            Anuluj
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </template>
 
 <script>
-import MainLayout from '@/components/MainLayout.vue'
 import AppPagination from '@/components/AppPagination.vue'
-import api from '@/api'; 
+import api from '@/api';
 
 export default {
   name: 'AuthorsView',
   components: {
-    MainLayout,
     AppPagination
   },
   data() {

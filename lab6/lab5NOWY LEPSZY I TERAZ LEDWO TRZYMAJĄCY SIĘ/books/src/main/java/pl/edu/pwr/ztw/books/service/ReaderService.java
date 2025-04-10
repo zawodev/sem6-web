@@ -19,6 +19,10 @@ public class ReaderService implements IReadersService {
     static {
         readersRepo.add(new Reader(nextId++, "Jan Kowalski"));
         readersRepo.add(new Reader(nextId++, "Anna Nowak"));
+        readersRepo.add(new Reader(nextId++, "Piotr Wiśniewski"));
+        readersRepo.add(new Reader(nextId++, "Katarzyna Lewandowska"));
+        readersRepo.add(new Reader(nextId++, "Tomasz Zieliński"));
+        readersRepo.add(new Reader(nextId++, "Ewa Wójcik"));
     }
 
     @Autowired

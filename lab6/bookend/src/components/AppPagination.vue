@@ -1,5 +1,5 @@
 <template>
-  <div style="margin: 20px 0;">
+  <div class="pagination-container">
     <button :disabled="currentPage === 1" @click="changePage(currentPage - 1)">Poprzednia</button>
     <span>Strona {{ currentPage }} z {{ totalPages }}</span>
     <button :disabled="currentPage === totalPages" @click="changePage(currentPage + 1)">Następna</button>
@@ -37,13 +37,31 @@ export default {
 </script>
 
 <style scoped>
+.pagination-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
 button {
   padding: 10px 16px;
   background-color: #D07070;
   color: white;
-  text-decoration: none;
+  border: none;
   border-radius: 6px;
   transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+button:hover:not(:disabled) {
+  background-color: #bb5d5d;
 }
 
 span {

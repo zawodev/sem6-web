@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class BooksService implements IBooksService {
     private static List<Book> booksRepo = new ArrayList<>();
-    private static int nextId = 4;
+    private static int nextId = 7;
 
     static {
         Author author1 = new Author(1, "Henryk Sienkiewicz");
@@ -23,6 +23,9 @@ public class BooksService implements IBooksService {
         booksRepo.add(new Book(1, "Potop", author1, 936));
         booksRepo.add(new Book(2, "Wesele", author2, 150));
         booksRepo.add(new Book(3, "Dziady", author3, 292));
+        booksRepo.add(new Book(4, "Król Edyp", null, 200));
+        booksRepo.add(new Book(5, "Król Lear", null, 300));
+        booksRepo.add(new Book(6, "Hamlet", null, 400));
     }
 
     @Override
@@ -80,16 +83,16 @@ public class BooksService implements IBooksService {
 
     public void updateReaderInBooks(Reader updatedReader) {
         for (Book book : booksRepo) {
-            if (book.getReader() != null && book.getReader().getId() == updatedReader.getId()) {
-                book.setReader(updatedReader);
+            if (book.getBorrower() != null && book.getBorrower().getId() == updatedReader.getId()) {
+                book.setBorrower(updatedReader);
             }
         }
     }
 
     public void removeReaderFromBooks(int readerId) {
         for (Book book : booksRepo) {
-            if (book.getReader() != null && book.getReader().getId() == readerId) {
-                book.setReader(null);
+            if (book.getBorrower() != null && book.getBorrower().getId() == readerId) {
+                book.setBorrower(null);
             }
         }
     }

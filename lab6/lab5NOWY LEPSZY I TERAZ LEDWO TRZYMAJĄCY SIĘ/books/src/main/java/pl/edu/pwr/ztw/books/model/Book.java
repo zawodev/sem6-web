@@ -5,7 +5,7 @@ public class Book {
     private String title;
     private Author author;
     private int pages;
-    private Reader reader; // null jeśli książka nie jest wypożyczona?
+    private Reader borrower; // null jeśli książka nie jest wypożyczona?
 
     public Book() {}
 
@@ -14,7 +14,7 @@ public class Book {
         this.title = title;
         this.author = author;
         this.pages = pages;
-        this.reader = null;
+        this.borrower = null;
     }
     
     public int getId() { return id; }
@@ -29,6 +29,6 @@ public class Book {
     public int getPages() { return pages; }
     public void setPages(int pages) { this.pages = pages; }
 
-    public Reader getReader() { return reader; }
-    public void setReader(Reader reader) { this.reader = reader; }
+    public Reader getBorrower() { return borrower; }
+    public void setBorrower(Reader reader) { this.borrower = reader; }
 }

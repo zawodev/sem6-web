@@ -23,7 +23,7 @@ public class LendingService implements ILendingService {
     public LendingInfo getLending(int bookId) {
         Book book = booksService.getBook(bookId);
         if (book != null) {
-            return new LendingInfo(book.getId(), book.getTitle(), book.getReader());
+            return new LendingInfo(book.getId(), book.getTitle(), book.getBorrower());
         }
         return null;
     }
@@ -32,7 +32,7 @@ public class LendingService implements ILendingService {
     public List<LendingInfo> getAllLendings() {
         List<LendingInfo> list = new ArrayList<>();
         for (Book book : booksService.getBooks()) {
-            list.add(new LendingInfo(book.getId(), book.getTitle(), book.getReader()));
+            list.add(new LendingInfo(book.getId(), book.getTitle(), book.getBorrower()));
         }
         return list;
     }
@@ -43,7 +43,7 @@ public class LendingService implements ILendingService {
         Reader reader = readerService.getReader(readerId);
 
         if (book != null && reader != null) {
-            book.setReader(reader);
+            book.setBorrower(reader);
             return true;
         }
         return false;
@@ -52,8 +52,8 @@ public class LendingService implements ILendingService {
     @Override
     public boolean returnBook(int bookId) {
         Book book = booksService.getBook(bookId);
-        if (book != null && book.getReader() != null) {
-            book.setReader(null);
+        if (book != null && book.getBorrower() != null) {
+            book.setBorrower(null);
             return true;
         }
         return false;

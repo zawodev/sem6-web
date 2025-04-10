@@ -15,12 +15,15 @@ import java.util.List;
 @Service
 public class AuthorsService implements IAuthorsService {
     private static List<Author> authorsRepo = new ArrayList<>();
-    private static int nextId = 4;
+    private static int nextId = 7;
 
     static {
         authorsRepo.add(new Author(1, "Henryk Sienkiewicz"));
         authorsRepo.add(new Author(2, "Stanisław Reymont"));
         authorsRepo.add(new Author(3, "Adam Mickiewicz"));
+        authorsRepo.add(new Author(4, "David Mickiewicz"));
+        authorsRepo.add(new Author(5, "Janusz Kovacewic"));
+        authorsRepo.add(new Author(6, "Michał Mickiewicz"));
     }
 
     @Autowired

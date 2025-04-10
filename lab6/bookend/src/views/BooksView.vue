@@ -53,16 +53,16 @@
         <tr v-for="book in paginatedBooks" :key="book.id">
           <td>{{ book.id }}</td>
           <td>{{ book.title }}</td>
-          <td>{{ book.author.name }}</td>
+          <td>{{ book.author ? book.author.name : 'brak'}}</td>
           <td>{{ book.pages }}</td>
-          <td>{{ book.borrower ? book.borrower.name : '---' }}</td>
+          <td>{{ book.reader ? book.reader.name : '---' }}</td>
           <td>
             <button @click="editBook(book)" class="btn edit-btn">Edytuj</button>
             <button @click="toggleBorrowDropdown(book.id)" class="btn"
               style="background-color: #42a5f5; color: white; margin: 0 6px;">
               Wypożycz
             </button>
-            <button v-if="book.borrower" @click="returnBook(book.id)" class="btn edit-btn">Zwróć</button>
+            <button v-if="book.reader" @click="returnBook(book.id)" class="btn edit-btn">Zwróć</button>
             <button @click="deleteBook(book.id)" class="btn delete-btn">Usuń</button>
 
             <div v-if="borrowDropdownBookId === book.id" style="margin-top: 8px;">
@@ -139,6 +139,7 @@ export default {
         await axios.put(`http://localhost:9090/lending/${bookId}/borrow/${readerId}`)
         this.borrowDropdownBookId = null
         this.fetchBooks()
+        console.log("this is fucked")
       } catch (e) {
         console.error('Błąd przy wypożyczaniu książki:', e)
       }

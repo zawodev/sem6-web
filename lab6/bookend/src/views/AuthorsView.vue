@@ -2,6 +2,24 @@
   <div class="author-container">
     <h1 class="page-title">Lista Autorów</h1>
 
+    <div class="form-section">
+      <h2 class="form-title">{{ isEdit ? 'Edytuj autora' : 'Dodaj nowego autora' }}</h2>
+      <form @submit.prevent="handleSubmit" class="author-form">
+        <div class="form-group">
+          <label>Nazwa:</label>
+          <input v-model="authorForm.name" required />
+        </div>
+        <div class="form-buttons">
+          <button type="submit" class="btn submit-btn">
+            {{ isEdit ? 'Aktualizuj' : 'Dodaj' }}
+          </button>
+          <button type="button" class="btn cancel-btn" v-if="isEdit" @click="cancelEdit">
+            Anuluj
+          </button>
+        </div>
+      </form>
+    </div>
+    
     <table class="author-table">
       <thead>
         <tr>
@@ -24,24 +42,6 @@
 
     <div class="pagination-wrapper">
       <AppPagination :total-items="authors.length" v-model:currentPage="currentPage" :page-size="pageSize" />
-    </div>
-
-    <div class="form-section">
-      <h2 class="form-title">{{ isEdit ? 'Edytuj autora' : 'Dodaj nowego autora' }}</h2>
-      <form @submit.prevent="handleSubmit" class="author-form">
-        <div class="form-group">
-          <label>Nazwa:</label>
-          <input v-model="authorForm.name" required />
-        </div>
-        <div class="form-buttons">
-          <button type="submit" class="btn submit-btn">
-            {{ isEdit ? 'Aktualizuj' : 'Dodaj' }}
-          </button>
-          <button type="button" class="btn cancel-btn" v-if="isEdit" @click="cancelEdit">
-            Anuluj
-          </button>
-        </div>
-      </form>
     </div>
   </div>
 </template>

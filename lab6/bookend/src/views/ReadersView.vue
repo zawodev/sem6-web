@@ -1,11 +1,12 @@
 <template>
   <div class="container">
     <h1 class="section-title">Czytelnicy</h1>
+    <h2 class="form-title">{{ readerForm.id ? 'Edytuj czytalnika' : 'Dodaj czytelnika' }}</h2>
     <form @submit.prevent="saveReader" class="form">
       <input v-model="readerForm.name" type="text" placeholder="Imię i nazwisko" required />
-      <button type="submit" class="btn submit-btn">{{ readerForm.id ? 'Aktualizuj' : 'Dodaj' }}</button>
-      <button v-if="readerForm.id" type="button" @click="resetForm" class="btn cancel-btn">Anuluj</button>
     </form>
+    <button type="submit" class="btn submit-btn">{{ readerForm.id ? 'Aktualizuj' : 'Dodaj' }}</button>
+    <button v-if="readerForm.id" type="button" @click="resetForm" class="btn cancel-btn">Anuluj</button>
 
     <table class="styled-table">
       <thead>
@@ -35,32 +36,32 @@
   <div class="container">
     <h2 class="section-title">Wypożyczenia</h2>
     <div v-if="borrowedBooksCount > 0">
-    <table class="styled-table">
-      <thead>
-        <tr>
-          <th>ID książki</th>
-          <th>Tytuł</th>
-          <th>Wypożyczona przez</th>
-          <th>Akcje</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="info in paginatedLendingInfos" :key="info.bookId">
-          <td>{{ info.bookId }}</td>
-          <td>{{ info.bookTitle }}</td>
-          <td>{{ info.borrower.name }}</td>
-          <td>
-            <button class="btn delete-btn" @click="returnBook(info.bookId)">
-              Zwrot
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>ID książki</th>
+            <th>Tytuł</th>
+            <th>Wypożyczona przez</th>
+            <th>Akcje</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="info in paginatedLendingInfos" :key="info.bookId">
+            <td>{{ info.bookId }}</td>
+            <td>{{ info.bookTitle }}</td>
+            <td>{{ info.borrower.name }}</td>
+            <td>
+              <button class="btn delete-btn" @click="returnBook(info.bookId)">
+                Zwrot
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-    <AppPagination :total-items="borrowedBooksCount" :current-page="currentPageLendings"
-      @update:currentPage="currentPageLendings = $event" :page-size="pageSize" />
-  </div>
+      <AppPagination :total-items="borrowedBooksCount" :current-page="currentPageLendings"
+        @update:currentPage="currentPageLendings = $event" :page-size="pageSize" />
+    </div>
     <p v-else style="text-align: center; color: #888; margin-top: 20px;">
       Brak wypożyczonych książek.
     </p>
@@ -165,6 +166,12 @@ export default {
 </script>
 
 <style scoped>
+.form-title {
+  color: #2e7d32;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
 .container {
   max-width: 1000px;
   margin: 30px auto;

@@ -1,12 +1,16 @@
 <template>
-  <!-- Główny layout może być zdefiniowany tutaj lub jako osobny komponent (np. MainLayout.vue) -->
-  <!-- W tym przykładzie korzystamy z router-view, co powoduje renderowanie widoków zgodnie z konfiguracją routera -->
-  <router-view />
+  <MainLayout>
+    <router-view />
+  </MainLayout>
 </template>
 
 <script>
+import MainLayout from '@/components/MainLayout.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    MainLayout
+  }
 }
 </script>
 

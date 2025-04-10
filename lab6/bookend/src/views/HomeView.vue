@@ -1,5 +1,4 @@
 <template>
-  <MainLayout>
     <div class="home-container">
       <h1 class="title">Biblioteka Aliksandryjska</h1>
       <p class="description">Uważaj żeby nie zgubić książek! Nie kupiliśmy ich. Poniżej założyciele</p>
@@ -22,16 +21,11 @@
         </div>
       </div>
     </div>
-  </MainLayout>
 </template>
 
 <script>
-import MainLayout from '@/components/MainLayout.vue'
 export default {
-  name: 'HomeView',
-  components: {
-    MainLayout
-  }
+  name: 'HomeView'
 }
 </script>
 

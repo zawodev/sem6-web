@@ -1,97 +1,92 @@
 <template>
-  <MainLayout>
-    <div class="books-container">
-      <h1 class="page-title">Lista książek</h1>
+  <div class="books-container">
+    <h1 class="page-title">Lista książek</h1>
 
-      <!-- Formularz -->
-      <div class="form-section">
-        <h2 class="form-title">{{ bookForm.id ? 'Edytuj książkę' : 'Dodaj nową książkę' }}</h2>
-        <form @submit.prevent="saveBook" class="book-form">
-          <div class="form-group">
-            <label for="title">Tytuł</label>
-            <input v-model="bookForm.title" type="text" id="title" required />
-          </div>
+    <!-- Formularz -->
+    <div class="form-section">
+      <h2 class="form-title">{{ bookForm.id ? 'Edytuj książkę' : 'Dodaj nową książkę' }}</h2>
+      <form @submit.prevent="saveBook" class="book-form">
+        <div class="form-group">
+          <label for="title">Tytuł</label>
+          <input v-model="bookForm.title" type="text" id="title" required />
+        </div>
 
-          <div class="form-group">
-            <label for="author">Autor</label>
-            <select v-model="bookForm.authorId" id="author" required>
-              <option disabled value="">Wybierz autora</option>
-              <option v-for="author in authors" :key="author.id" :value="author.id">
-                {{ author.name }}
-              </option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label for="author">Autor</label>
+          <select v-model="bookForm.authorId" id="author" required>
+            <option disabled value="">Wybierz autora</option>
+            <option v-for="author in authors" :key="author.id" :value="author.id">
+              {{ author.name }}
+            </option>
+          </select>
+        </div>
 
-          <div class="form-group">
-            <label for="pages">Liczba stron</label>
-            <input v-model.number="bookForm.pages" type="number" id="pages" min="1" required />
-          </div>
+        <div class="form-group">
+          <label for="pages">Liczba stron</label>
+          <input v-model.number="bookForm.pages" type="number" id="pages" min="1" required />
+        </div>
 
-          <div class="form-buttons">
-            <button type="submit" class="btn submit-btn">
-              {{ bookForm.id ? 'Aktualizuj' : 'Dodaj' }}
-            </button>
-            <button type="button" v-if="bookForm.id" @click="resetForm" class="btn">
-              Anuluj
-            </button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Tabela  -->
-      <table class="book-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Tytuł</th>
-            <th>Autor</th>
-            <th>Strony</th>
-            <th>Wypożyczona przez</th>
-            <th>Akcje</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="book in paginatedBooks" :key="book.id">
-            <td>{{ book.id }}</td>
-            <td>{{ book.title }}</td>
-            <td>{{ book.author.name }}</td>
-            <td>{{ book.pages }}</td>
-            <td>{{ book.borrower ? book.borrower.name : '---' }}</td>
-            <td>
-              <button @click="editBook(book)" class="btn edit-btn">Edytuj</button>
-              <button @click="toggleBorrowDropdown(book.id)" class="btn" style="background-color: #42a5f5; color: white; margin: 0 6px;">
-                Wypożycz
-              </button>
-              <button @click="deleteBook(book.id)" class="btn delete-btn">Usuń</button>
-
-              <div v-if="borrowDropdownBookId === book.id" style="margin-top: 8px;">
-                <select @change="borrowBook(book.id, $event.target.value)" class="btn" style="margin-top: 6px;">
-                  <option disabled selected value="">Wybierz czytelnika</option>
-                  <option v-for="reader in readers" :key="reader.id" :value="reader.id">{{ reader.name }}</option>
-                </select>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <AppPagination
-        :totalItems="books.length"
-        :currentPage="currentPage"
-         @update:currentPage="currentPage = $event"
-        :pageSize="pageSize"
-      />
+        <div class="form-buttons">
+          <button type="submit" class="btn submit-btn">
+            {{ bookForm.id ? 'Aktualizuj' : 'Dodaj' }}
+          </button>
+          <button type="button" v-if="bookForm.id" @click="resetForm" class="btn">
+            Anuluj
+          </button>
+        </div>
+      </form>
     </div>
-  </MainLayout>
+
+    <!-- Tabela  -->
+    <table class="book-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tytuł</th>
+          <th>Autor</th>
+          <th>Strony</th>
+          <th>Wypożyczona przez</th>
+          <th>Akcje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="book in paginatedBooks" :key="book.id">
+          <td>{{ book.id }}</td>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author.name }}</td>
+          <td>{{ book.pages }}</td>
+          <td>{{ book.borrower ? book.borrower.name : '---' }}</td>
+          <td>
+            <button @click="editBook(book)" class="btn edit-btn">Edytuj</button>
+            <button @click="toggleBorrowDropdown(book.id)" class="btn"
+              style="background-color: #42a5f5; color: white; margin: 0 6px;">
+              Wypożycz
+            </button>
+            <button v-if="book.borrower" @click="returnBook(book.id)" class="btn edit-btn">Zwróć</button>
+            <button @click="deleteBook(book.id)" class="btn delete-btn">Usuń</button>
+
+            <div v-if="borrowDropdownBookId === book.id" style="margin-top: 8px;">
+              <select @change="borrowBook(book.id, $event.target.value)" class="btn" style="margin-top: 6px;">
+                <option disabled selected value="">Wybierz czytelnika</option>
+                <option v-for="reader in readers" :key="reader.id" :value="reader.id">{{ reader.name }}</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <AppPagination :totalItems="books.length" :currentPage="currentPage" @update:currentPage="currentPage = $event"
+      :pageSize="pageSize" />
+  </div>
 </template>
 
 <script>
-import MainLayout from '@/components/MainLayout.vue'
 import AppPagination from '@/components/AppPagination.vue'
 import axios from 'axios'
 
 export default {
   name: 'BooksView',
-  components: { MainLayout, AppPagination },
+  components: { AppPagination },
   data() {
     return {
       readers: [],
@@ -199,6 +194,14 @@ export default {
         this.fetchBooks()
       } catch (e) {
         console.error('Błąd przy usuwaniu książki:', e)
+      }
+    },
+    async returnBook(bookId) {
+      try {
+        await axios.put(`http://localhost:9090/lending/${bookId}/return`)
+        this.fetchBooks()
+      } catch (err) {
+        console.error('Błąd zwrotu książki: ', err)
       }
     },
     resetForm() {

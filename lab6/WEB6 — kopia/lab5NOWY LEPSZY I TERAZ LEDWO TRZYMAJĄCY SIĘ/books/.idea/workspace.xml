@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a82077c7-65cb-4a65-8250-b402b4396260" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/BooksApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/Hello.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/config/CorsConfig$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/config/CorsConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/config/SwaggerConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/controller/AuthorsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/controller/BooksController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/controller/LendingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/controller/ReaderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/model/Author.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/model/Book.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/model/LendingInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/model/Reader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/service/AuthorsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/service/BooksService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/service/LendingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/service/ReaderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/service/iface/IAuthorsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/service/iface/IBooksService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/service/iface/ILendingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/edu/pwr/ztw/books/service/iface/IReadersService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/edu/pwr/ztw/books/BooksApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/babel.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/babel.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/jsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/jsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/components/AppPagination.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/components/AppPagination.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/components/MainLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/components/MainLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/views/AuthorsView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/views/AuthorsView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/views/BooksView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/views/BooksView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/views/HomeView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/views/HomeView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/src/views/ReadersView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/src/views/ReadersView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bookend/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bookend/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/lab5.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/lab5.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/BooksApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/BooksApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/Hello.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/Hello.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/config/CorsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/config/SwaggerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/controller/AuthorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/controller/AuthorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/controller/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/controller/BooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/controller/LendingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/controller/LendingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/controller/ReaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/controller/ReaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/model/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/model/Author.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/model/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/model/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/model/LendingInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/model/LendingInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/model/Reader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/model/Reader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/AuthorsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/AuthorsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/BooksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/BooksService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/LendingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/LendingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/ReaderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/ReaderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/iface/IAuthorsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/iface/IAuthorsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/iface/IBooksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/iface/IBooksService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/iface/ILendingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/java/pl/edu/pwr/ztw/books/service/iface/IReadersService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/test/java/pl/edu/pwr/ztw/books/BooksApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books/src/test/java/pl/edu/pwr/ztw/books/BooksApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2vX61HCUtTcyHTknou1Vb3tJxts" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.BooksApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/aliks/Documents/GitHub/zawodev/sem6-web/lab6/lab5NOWY LEPSZY I TERAZ LEDWO TRZYMAJĄCY SIĘ/books",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="BooksApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="books" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="pl.edu.pwr.ztw.books.BooksApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SwiftWorkspaceSettings">
+    <option name="detectedToolchain" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a82077c7-65cb-4a65-8250-b402b4396260" name="Changes" comment="" />
+      <created>1744278856301</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744278856301</updated>
+      <workItem from="1744278857858" duration="123000" />
+      <workItem from="1744278988198" duration="6000" />
+      <workItem from="1744279105407" duration="148000" />
+      <workItem from="1744279330951" duration="557000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

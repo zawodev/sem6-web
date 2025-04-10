@@ -55,14 +55,14 @@
           <td>{{ book.title }}</td>
           <td>{{ book.author ? book.author.name : 'brak'}}</td>
           <td>{{ book.pages }}</td>
-          <td>{{ book.reader ? book.reader.name : '---' }}</td>
+          <td>{{ book.borrower ? book.borrower.name : '---' }}</td>
           <td>
             <button @click="editBook(book)" class="btn edit-btn">Edytuj</button>
             <button @click="toggleBorrowDropdown(book.id)" class="btn"
               style="background-color: #42a5f5; color: white; margin: 0 6px;">
               Wypożycz
             </button>
-            <button v-if="book.reader" @click="returnBook(book.id)" class="btn edit-btn">Zwróć</button>
+            <button v-if="book.borrower" @click="returnBook(book.id)" class="btn edit-btn">Zwróć</button>
             <button @click="deleteBook(book.id)" class="btn delete-btn">Usuń</button>
 
             <div v-if="borrowDropdownBookId === book.id" style="margin-top: 8px;">

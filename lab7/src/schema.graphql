@@ -1,0 +1,38 @@
+type Employee { 
+ id: ID!
+ name: String!
+ title: String!
+ email: String!
+ contractor: Boolean!
+ age: Int!
+ publications: [Article!]!
+}
+
+type Article {
+ id: ID!
+ name: String!
+}
+
+type ToDoItem{
+ id: ID!
+ title: String!
+ completed: Boolean!
+ user: User!
+}
+
+type User{
+ id: ID!
+ name: String!
+ email: String!
+ login: String!
+ todos: [ToDoItem!]!
+}
+
+type Query {
+ todos: [ToDoItem!]
+ todo(id: ID!): ToDoItem
+ users: [User!]
+ user(id: ID!): User
+ employees: [Employee!]
+ employee(id: ID!): Employee
+} 

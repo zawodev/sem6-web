@@ -1,26 +1,11 @@
-type Employee { 
- id: ID!
- name: String!
- title: String!
- email: String!
- contractor: Boolean!
- age: Int!
- publications: [Article!]!
-}
-
-type Article {
- id: ID!
- name: String!
-}
-
-type ToDoItem{
+type ToDoItem {
  id: ID!
  title: String!
  completed: Boolean!
  user: User!
 }
 
-type User{
+type User {
  id: ID!
  name: String!
  email: String!
@@ -29,10 +14,18 @@ type User{
 }
 
 type Query {
- todos: [ToDoItem!]
- todo(id: ID!): ToDoItem
- users: [User!]
+ users: [User!]!
  user(id: ID!): User
- employees: [Employee!]
- employee(id: ID!): Employee
-} 
+ todos: [ToDoItem!]!
+ todo(id: ID!): ToDoItem
+}
+
+type Mutation {
+ addUser(name: String!, email: String!, login: String!): User!
+ updateUser(id: ID!, name: String, email: String, login: String): User
+ deleteUser(id: ID!): Boolean!
+
+ addTodo(title: String!, completed: Boolean!, user_id: ID!): ToDoItem!
+ updateTodo(id: ID!, title: String, completed: Boolean, user_id: ID): ToDoItem
+ deleteTodo(id: ID!): Boolean!
+}

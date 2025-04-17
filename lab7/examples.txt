@@ -1,0 +1,87 @@
+query {
+  users {
+    id
+    name
+    email
+    login
+    todos {
+      id
+      title
+      completed
+    }
+  }
+}
+
+
+query {
+  todo(id: 2) {
+    id
+    title
+    completed
+    user {
+      id
+      name
+    }
+  }
+}
+
+
+
+
+
+// MUTATION ----------------
+
+mutation {
+  addUser(name: "Marek Nowak", email: "marek.nowak@przyklad.pl", login: "mnowak") {
+    id
+    name
+    email
+    login
+  }
+}
+
+
+mutation {
+  updateUser(id: 3, email: "zmieniony.email@przyklad.pl") {
+    id
+    name
+    email
+    login
+  }
+}
+
+
+mutation {
+  deleteUser(id: 4)
+}
+
+
+
+mutation {
+  addTodo(title: "Nauczyć się GraphQL", completed: false, user_id: 1) {
+    id
+    title
+    completed
+    user {
+      id
+      name
+    }
+  }
+}
+
+
+
+mutation {
+  updateTodo(id: 5, completed: true) {
+    id
+    title
+    completed
+  }
+}
+
+
+
+
+mutation {
+  deleteTodo(id: 6)
+}

@@ -1,50 +1,58 @@
-const db = require('./db');
+const axios = require('axios');
+const db    = require('./db');
 
 async function setup() {
-    // Usuń stare tabele (jeśli istnieją)
-    await db.schema.dropTableIfExists('todos');
-    await db.schema.dropTableIfExists('users');
+    try {
+        await db.schema.dropTableIfExists('todos');
+        await db.schema.dropTableIfExists('users');
+        
+        await db.schema.createTable('users', table => {
+            table.increments('id').primary();
+            table.string('name').notNullable();
+            table.string('email').notNullable();
+            table.string('login').notNullable();
+        });
 
-    // Utwórz tabelę użytkowników
-    await db.schema.createTable('users', table => {
-        table.increments('id').primary();
-        table.string('name').notNullable();
-        table.string('email').notNullable();
-        table.string('login').notNullable();
-    });
+        await db.schema.createTable('todos', table => {
+            table.increments('id').primary();
+            table.string('title').notNullable();
+            table.boolean('completed').notNullable().defaultTo(false);
+            table.integer('user_id')
+                .unsigned()
+                .references('id')
+                .inTable('users')
+                .onDelete('CASCADE');
+        });
+        
+        console.log('🔄  Fetching users from JSONPlaceholder…');
+        const usersRes = await axios.get('https://jsonplaceholder.typicode.com/users');
+        const users = usersRes.data.map(u => ({
+            id:    u.id,
+            name:  u.name,
+            email: u.email,
+            login: u.username
+        }));
+        console.log(`✳️  Inserting ${users.length} users…`);
+        await db('users').insert(users);
+        
+        console.log('🔄  Fetching todos from JSONPlaceholder…');
+        const todosRes = await axios.get('https://jsonplaceholder.typicode.com/todos');
+        const todos = todosRes.data.map(t => ({
+            id:        t.id,
+            title:     t.title,
+            completed: t.completed,
+            user_id:   t.userId
+        }));
+        console.log(`✳️  Inserting ${todos.length} todos…`);
+        await db('todos').insert(todos);
 
-    // Utwórz tabelę todo
-    await db.schema.createTable('todos', table => {
-        table.increments('id').primary();
-        table.string('title').notNullable();
-        table.boolean('completed').notNullable().defaultTo(false);
-        table.integer('user_id')
-            .unsigned()
-            .references('id')
-            .inTable('users')
-            .onDelete('CASCADE');
-    });
+        console.log('✅  Database setup complete.');
+        process.exit(0);
 
-    // Seed: przykładowi użytkownicy
-    await db('users').insert([
-        { name: 'Jan Konieczny', email: 'jan.konieczny@wonet.pl', login: 'jkonieczny' },
-        { name: 'Anna Wesołowska', email: 'anna.wesolowska@sad.gov.pl', login: 'anna.wesolowska' }
-    ]);
-
-    // Seed: przykładowe zadania
-    await db('todos').insert([
-        { title: 'Naprawić samochód', completed: false, user_id: 1 },
-        { title: 'Posprzątać garaż',  completed: true,  user_id: 1 },
-        { title: 'Napisać e-mail',     completed: false, user_id: 1 },
-        { title: 'Odebrać buty',       completed: false, user_id: 2 },
-        { title: 'Wysłać paczkę',      completed: true,  user_id: 2 }
-    ]);
-
-    console.log('✳️  Database setup complete.');
-    process.exit(0);
+    } catch (err) {
+        console.error('❌  Error during setup:', err);
+        process.exit(1);
+    }
 }
 
-setup().catch(err => {
-    console.error(err);
-    process.exit(1);
-});
+setup();

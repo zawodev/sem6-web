@@ -24,7 +24,7 @@ async function setup() {
                 .onDelete('CASCADE');
         });
         
-        console.log('🔄  Fetching users from JSONPlaceholder…');
+        console.log('🔄  Fetching users from JSONPlaceholder...');
         const usersRes = await axios.get('https://jsonplaceholder.typicode.com/users');
         const users = usersRes.data.map(u => ({
             id:    u.id,
@@ -32,10 +32,10 @@ async function setup() {
             email: u.email,
             login: u.username
         }));
-        console.log(`✳️  Inserting ${users.length} users…`);
+        console.log(`✳️  Inserting ${users.length} users...`);
         await db('users').insert(users);
         
-        console.log('🔄  Fetching todos from JSONPlaceholder…');
+        console.log('🔄  Fetching todos from JSONPlaceholder...');
         const todosRes = await axios.get('https://jsonplaceholder.typicode.com/todos');
         const todos = todosRes.data.map(t => ({
             id:        t.id,
@@ -43,7 +43,7 @@ async function setup() {
             completed: t.completed,
             user_id:   t.userId
         }));
-        console.log(`✳️  Inserting ${todos.length} todos…`);
+        console.log(`✳️  Inserting ${todos.length} todos...`);
         await db('todos').insert(todos);
 
         console.log('✅  Database setup complete.');

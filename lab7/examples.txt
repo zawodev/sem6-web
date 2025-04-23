@@ -1,3 +1,6 @@
+npm start
+
+
 query {
   users {
     id
@@ -13,7 +16,7 @@ query {
 }
 
 
-query {
+query{
   todo(id: 2) {
     id
     title
@@ -27,9 +30,6 @@ query {
 
 
 
-
-
-// MUTATION ----------------
 
 mutation {
   addUser(name: "Marek Nowak", email: "marek.nowak@przyklad.pl", login: "mnowak") {

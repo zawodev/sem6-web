@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Czat Socket.IO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding-top: 70px;
+    }
+
+    #room-form {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #room-input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    #chat-container {
+      max-width: 800px;
+      margin: 0 auto 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    #messages {
+      list-style: none;
+      padding: 1rem;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    #messages li {
+      margin-bottom: 1rem;
+      display: flex;
+    }
+
+    .bubble {
+      padding: 10px 15px;
+      border-radius: 20px;
+      max-width: 70%;
+      position: relative;
+    }
+
+    .self {
+      margin-left: auto;
+      background: #b2fab4;
+      text-align: right;
+    }
+
+    .other {
+      margin-right: auto;
+      background: #add8e6;
+      text-align: left;
+    }
+
+    .meta {
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 5px;
+    }
+
+    .system {
+      text-align: center;
+      color: gray;
+      font-style: italic;
+    }
+
+    #typing {
+      font-style: italic;
+      color: #888;
+      padding: 0 1rem;
+      height: 1.2rem;
+    }
+
+    #form {
+      display: flex;
+      padding: 1rem;
+      border-top: 1px solid #ddd;
+    }
+
+    #input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 20px;
+    }
+
+    #send,
+    #sendImage,
+    #join {
+      margin-left: 0.5rem;
+      padding: 0 15px;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    #send,
+    #join {
+      background: #28a745;
+    }
+
+    #sendImage {
+      background: #007bff;
+    }
+
+    #imageFile {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="room-form">
+    <input id="room-input" placeholder="Nazwa pokoju (np. lobby)" />
+    <button id="join">Połącz</button>
+  </div>
+
+  <div id="chat-container">
+    <ul id="messages"></ul>
+    <div id="typing"></div>
+    <form id="form">
+      <input id="input" autocomplete="off" placeholder="Napisz wiadomość..." />
+      <button id="send">Wyślij</button>
+      <input type="file" id="imageFile" accept="image/*" />
+      <button id="sendImage" type="button">Obraz</button>
+    </form>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    let myId;
+    let nick, room;
+
+    promptValidNick(validNick => {
+      nick = validNick;
+
+      // ask for room now so it wont go out of prompting
+      while (!room || room.trim().length === 0) {
+        room = prompt('Do jakiego pokoju chcesz dołączyć?');
+        if (room === null) room = 'lobby';
+      }
+      room = room.trim();
+      document.getElementById('room-input').value = room;
+
+      socket.emit('join', { nick, room });
+    });
+
+    document.getElementById('join').onclick = () => {
+      const room = document.getElementById('room-input').value.trim() || 'lobby';
+      socket.emit('join', { nick, room });
+      document.getElementById('messages').innerHTML = '';
+    };
+
+    socket.on('connect', () => { myId = socket.id; });
+
+    document.getElementById('form').onsubmit = e => {
+      e.preventDefault();
+      const txt = document.getElementById('input').value;
+      if (!txt) return;
+      socket.emit('chatMessage', txt);
+      document.getElementById('input').value = '';
+      socket.emit('stopTyping');
+    };
+
+    const imageFile = document.getElementById('imageFile');
+    document.getElementById('sendImage').onclick = () => imageFile.click();
+    imageFile.onchange = () => {
+      const file = imageFile.files[0];
+      const reader = new FileReader();
+      reader.onload = () => socket.emit('image', reader.result);
+      reader.readAsDataURL(file);
+      imageFile.value = '';
+    };
+
+    let typing = false, timeout;
+    document.getElementById('input').addEventListener('input', () => {
+      if (!typing) {
+        typing = true;
+        socket.emit('typing');
+      }
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        typing = false;
+        socket.emit('stopTyping');
+      }, 2000);
+    });
+
+    const messages = document.getElementById('messages');
+
+    function addMessage(data, isSelf = false, isImage = false) {
+      const li = document.createElement('li');
+      //to fajne
+      const bubble = document.createElement('div');
+      bubble.classList.add('bubble', isSelf ? 'self' : 'other');
+
+      if (!isImage) {
+        bubble.innerHTML = `<strong>${data.nick}</strong>: ${data.msg}`
+          + `<div class="meta">${data.timestamp}</div>`;
+      } else {
+        bubble.innerHTML = `<strong>${data.nick}</strong>:<br>`
+          + `<img src="${data.imgData}" style="max-width:100%; border-radius:8px;" />`
+          + `<div class="meta">${data.timestamp}</div>`;
+      }
+
+      li.appendChild(bubble);
+      messages.appendChild(li);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    //this is dumb
+    function promptValidNick(callback) {
+      function askNick() {
+        let nick = prompt('Podaj swój pseudonim (min 3 znaki):');
+        if (!nick || nick.trim().length < 3) {
+          alert('Pseudonim musi mieć co najmniej 3 znaki.');
+          return askNick();
+        }
+        nick = nick.trim();
+
+        socket.emit('checkNick', nick, isAvailable => {
+          if (!isAvailable) {
+            alert(`Pseudonim "${nick}" jest już zajęty.`);
+            askNick();
+          } else {
+            callback(nick);
+          }
+        });
+      }
+
+      askNick();
+    }
+
+    socket.on('myMessage', data => addMessage({ nick: data.nick, msg: data.msg, timestamp: data.timestamp }, true, false));
+    socket.on('chatMessage', data => {
+      const isSelf = data.senderId === myId;
+      addMessage({ nick: data.nick, msg: data.msg, timestamp: data.timestamp }, isSelf, false);
+    });
+    socket.on('myImage', data => addMessage({ nick: data.nick, imgData: data.imgData, timestamp: data.timestamp }, true, true));
+    socket.on('image', data => {
+      const isSelf = data.senderId === myId;
+      addMessage({ nick: data.nick, imgData: data.imgData, timestamp: data.timestamp }, isSelf, true);
+    });
+    
+    socket.on('typing', user => document.getElementById('typing').textContent = `${user} pisze...`);
+    socket.on('stopTyping', () => document.getElementById('typing').textContent = '');
+    socket.on('chatHistory', history => {
+      history.forEach(data => {
+        const isSelf = data.nick === nick;
+        if (data.type === 'text') {
+          addMessage({ nick: data.nick, msg: data.content, timestamp: data.timestamp }, isSelf, false);
+        } else if (data.type === 'image') {
+          addMessage({ nick: data.nick, imgData: data.content, timestamp: data.timestamp }, isSelf, true);
+        }
+      });
+    });
+    socket.on('systemMessage', msg => addMessage({ nick: 'System', msg, timestamp: '' }, false, false));
+  </script>
+</body>
+
+</html>
